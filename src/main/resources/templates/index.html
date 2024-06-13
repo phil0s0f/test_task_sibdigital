@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Сортировка пузырьком</title>
+    <script>
+        function validateInput() {
+            const input = document.getElementById('array-input').value;
+            const regex = /^(\s*-?\d+\s*)(,\s*-?\d+\s*)*$/;
+            if (!regex.test(input)) {
+                alert('Пожалуйста, проверьте правильность ввода!');
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+<h1>Введите целые значения для сортировки (через запятую)</h1>
+<form action="/sort" method="post" onsubmit="return validateInput()">
+    <input type="text" id="array-input" name="array" required>
+    <select name="ascending">
+        <option value="true">По возрастанию</option>
+        <option value="false">По убыванию</option>
+    </select>
+    <button type="submit">Отсортировать</button>
+</form>
+</body>
+</html>
