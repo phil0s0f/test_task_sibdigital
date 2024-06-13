@@ -17,7 +17,7 @@
 </head>
 <body>
 <h1>Введите целые значения для сортировки (через запятую)</h1>
-<form action="/sort" method="post" onsubmit="return validateInput()">
+<form action="/sort" method="post" onsubmit="return validateInput()" autocomplete="off">
     <input type="text" id="array-input" name="array" required>
     <select name="ascending">
         <option value="true">По возрастанию</option>
