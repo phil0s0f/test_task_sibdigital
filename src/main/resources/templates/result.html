@@ -1,13 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Сортировка пузырьком</title>
-</head>
+<th:block th:include="header.html"></th:block>
+
 <body>
-<h1>Результат сортировки</h1>
-<p>Отсортированый массив: <span th:text="${sortedArray}"></span></p>
-<p>ID отсортированного массива: <a th:href="@{/getSortedArray(id=${sortId})}"><span th:text="${sortId}"></span></a></p>
-<a href="/">Главная страница</a>
+
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="text-center">Результат сортировки</h1>
+            </div>
+            <div class="card-body text-center">
+                <p>Отсортированый массив: <span th:text="${sortedArray}"></span></p>
+                <p>ID отсортированного массива: <a th:href="@{/getSortedArray(id=${sortId})}"><span
+                        th:text="${sortId}"></span></a></p>
+                <a href="/" class="btn btn-primary">Главная страница</a>
+            </div>
+            <div class="card-footer">
+                <p class="text-center">Выполнил: Дугаров В.А.</p>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
-</html>

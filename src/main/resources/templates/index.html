@@ -1,29 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Сортировка пузырьком</title>
-    <script>
-        function validateInput() {
-            const input = document.getElementById('array-input').value;
-            const regex = /^(\s*-?\d+\s*)(,\s*-?\d+\s*)*$/;
-            if (!regex.test(input)) {
-                alert('Пожалуйста, проверьте правильность ввода!');
-                return false;
-            }
-            return true;
+<th:block th:include="header.html"></th:block>
+
+<script>
+    function validateInput() {
+        const input = document.getElementById('array-input').value;
+        const regex = /^(\s*-?\d+\s*)(,\s*-?\d+\s*)*$/;
+        if (!regex.test(input)) {
+            alert('Пожалуйста, проверьте правильность ввода!');
+            return false;
         }
-    </script>
-</head>
+        return true;
+    }
+</script>
 <body>
-<h1>Введите целые значения для сортировки (через запятую)</h1>
-<form action="/sort" method="post" onsubmit="return validateInput()" autocomplete="off">
-    <input type="text" id="array-input" name="array" required>
-    <select name="ascending">
-        <option value="true">По возрастанию</option>
-        <option value="false">По убыванию</option>
-    </select>
-    <button type="submit">Отсортировать</button>
-</form>
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="text-center">Сортировка методом пузырька</h1>
+            </div>
+            <div class="card-body">
+                <form action="/sort" method="post" onsubmit="return validateInput()" autocomplete="off">
+                    <div class="input-group mb-3">
+                        <input id="array-input" name="array" type="text" class="form-control"
+                               placeholder="Введите целые значения через запятую"
+                               aria-label="Введите целые значения через запятую" required>
+                        <div class="input-group-append">
+                            <select name="ascending" class="form-select">
+                                <option value="true">По возрастанию</option>
+                                <option value="false">По убыванию</option>
+                            </select>
+                        </div>
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-primary">Отсортировать</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-center">
+                <p class="text-center">Выполнил: Дугаров В.А.</p>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
-</html>
