@@ -22,13 +22,14 @@ public class SortController {
     @Autowired
     private SortResultRepository sortResultRepository;
 
+
     @GetMapping("/")
     public String home() {
-        return "index";
+        return "sort-page";
     }
 
-    @PostMapping("/sort")
-    public String sort(@RequestParam("array") String arrayString, @RequestParam("ascending") Boolean ascending, Model model) {
+    @PostMapping("/sort-result")
+    public String resultPage(@RequestParam("array") String arrayString, @RequestParam("ascending") Boolean ascending, Model model) {
         int[] array = Arrays.stream(arrayString.split(","))
                 .map(String::trim)
                 .mapToInt(Integer::parseInt)
@@ -48,7 +49,14 @@ public class SortController {
         model.addAttribute("sortedArray", sortedArrayString);
         model.addAttribute("sortId", sortResult.getId());
 
-        return "result";
+        return "result-page";
+    }
+
+    @GetMapping("/sort-history")
+    public String sortHistoryPage(Model model) {
+        Iterable<SortResult> sortResultList = sortResultRepository.findAll();
+        model.addAttribute("results", sortResultList);
+        return "sort-history-page";
     }
 
     @GetMapping("/getSortedArray")

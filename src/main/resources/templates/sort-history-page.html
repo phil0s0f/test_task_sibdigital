@@ -1,0 +1,44 @@
+<th:block th:include="header.html"></th:block>
+
+<script>
+    function validateInput() {
+        const input = document.getElementById('array-input').value;
+        const regex = /^(\s*-?\d+\s*)(,\s*-?\d+\s*)*$/;
+        if (!regex.test(input)) {
+            alert('Пожалуйста, проверьте правильность ввода!');
+            return false;
+        }
+        return true;
+    }
+</script>
+<body>
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h1 class="text-center">История сортировок</h1>
+            </div>
+            <div class="card-body" >
+                <table class="table table-sm table-striped table-hover text-center">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Дата и время</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="result : ${results}" >
+                        <td><a th:href="@{/getSortedArray(id=${result.id})}"><span
+                                th:text="${result.id}"></span></a></td>
+                        <td th:text="${#dates.format(result.sortDate, 'dd-MM-yyyy HH:mm')}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer text-center">
+                <p class="text-center">Автор: Дугаров В.А.</p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
